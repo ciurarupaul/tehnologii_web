@@ -1,0 +1,26 @@
+{
+  "name": "homework-1",
+  "version": "1.0.0",
+  "description": "Template for the first webtech homework: JavaScript basics",
+  "main": "main.js",
+  "scripts": {
+    "test": "jest",
+    "test-rle-comp": "jest test/rle-comp.test.js",
+    "test-rle-decomp": "jest test/rle-decomp.test.js",
+    "test-caesar-crypt": "jest test/caesar-crypt.test.js",
+    "test-caesar-decrypt": "jest test/caesar-decrypt.test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/csie-web/homework-1.git"
+  },
+  "keywords": [],
+  "author": "csie-web",
+  "bugs": {
+    "url": "https://github.com/csie-web/homework-1/issues"
+  },
+  "homepage": "https://github.com/csie-web/homework-1#readme",
+  "dependencies": {
+    "jest": "^30.2.0"
+  }
+}
