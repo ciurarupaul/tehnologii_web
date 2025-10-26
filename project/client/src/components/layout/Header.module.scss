@@ -1,0 +1,10 @@
+@use "../../scss/mixins";
+
+.header {
+  height: max-content;
+  padding: 4rem;
+
+  background-color: var(--background--lines);
+}
+
+//

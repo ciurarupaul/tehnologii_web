@@ -1,0 +1,8 @@
+@use "../../scss/mixins";
+
+.footer {
+  height: max-content;
+  padding: 4rem;
+
+  background-color: var(--background--lines);
+}

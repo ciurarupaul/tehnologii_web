@@ -1,0 +1,74 @@
+@use "./mixins";
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+:root {
+  // colors
+  --background: #fff;
+  --background--hover: #f6f6f6;
+  --background--lines: #ced4da;
+
+  --primary: #000;
+  --secondary: #343a40;
+
+  --red: #e03131;
+  --green: #2f9e44;
+
+  // for badges
+  --success--background: #deeacf;
+  --success--text: #2e4a07;
+  --error--background: #f9d6d6;
+  --error--text: #ca2c2c;
+  --warning--background: #fef3d1;
+  --warning--text: #e47112;
+  --neutral--background: #f6f6f6;
+  --neutral--text: #343a40;
+
+  // typography
+  --fontsize--xsmall: 1.2rem; // unimportant
+  --fontsize--small: 1.4rem; // descriptions
+  --fontsize--medium: 1.6rem; // default
+  --fontsize--large: 1.8rem; // user input
+  --fontsize--xlarge: 2.2rem; // buttons / nav / headers
+  --fontsize--huge: 3.2rem; // h1s, big titles
+}
+
+:focus-visible {
+  // keyboard navigation
+  outline: 1px solid var(--primary);
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  box-sizing: border-box;
+  background-color: var(--background);
+  color: var(--primary);
+  margin: 0 auto;
+  font-size: var(--fontsize--medium);
+
+  height: 100dvh;
+  max-height: 100dvh;
+  width: 100%;
+  max-width: 160rem;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  // take up all the available space in order to fill 100vh
+  flex-grow: 1;
+}
+
+.reset {
+  all: unset;
+}

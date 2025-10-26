@@ -1,0 +1,23 @@
+{
+  "name": "client",
+  "version": "0.1.0",
+  "author": "CIURARU Paul",
+  "scripts": {
+    "dev": "next dev --turbo",
+    "prod": "npm run build && npm run start"
+  },
+  "dependencies": {
+    "next": "^15.5.4",
+    "sass": "^1.93.2",
+    "zod": "^4.1.12"
+  },
+  "devDependencies": {
+    "@types/node": "^22.18.11",
+    "@types/react": "^19.2.2",
+    "@types/react-dom": "^19.2.2",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3"
+  }
+}
