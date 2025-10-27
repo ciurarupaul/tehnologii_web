@@ -1,0 +1,9 @@
+{
+  "name": "2_dependencies",
+  "type": "module",
+  "main": "index.js",
+  "dependencies": {
+    "crypto-js": "^4.2.0"
+  },
+  "devDependencies": {}
+}

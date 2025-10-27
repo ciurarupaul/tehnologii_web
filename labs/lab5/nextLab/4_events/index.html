@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <script>
+      window.onload = () => {
+        const button = document.getElementById("myBtn");
+        const myEvent = new Event("myEvt");
+
+        const clickHandler = () => {
+          document.dispatchEvent(myEvent);
+          console.log("Butonul a fost apasat");
+        };
+
+        const myEvtHandler = () => {
+          console.log("Butonul a fost apasat");
+        };
+
+        button.onclick = clickHandler;
+        document.addEventListener("myEvt", myEvtHandler);
+      };
+    </script>
+
+    <script>
+      window.onload = () => {
+        const target = document.getElementById("taskBtn");
+        const customEvent = new Event("customEvent");
+
+        const taskClickHandler = () => {
+          document
+            .getElementById("task-container")
+            .insertAdjacentHTML("beforeend", "<p>click</p>");
+          document.dispatchEvent(customEvent);
+        };
+
+        const myCustomHandler = () => {
+          console.log("custom event handled");
+        };
+
+        target.onclick = taskClickHandler;
+        document.addEventListener("customEvent", myCustomHandler);
+      };
+    </script>
+  </head>
+  <body>
+    <button id="myBtn">Click me!</button>
+    <div id="task-container">
+      <button id="taskBtn">Task click</button>
+    </div>
+  </body>
+</html>
+
+<!-- alegeți un element din DOM și tratați un eveniment trimis de acesta. Creați un eveniment custom pe care îl veți trimite și trata odata cu tratarea evenimentului ales al elementului din DOM. -->

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <script>
+      window.onload = () => {
+        const form = document.getElementById("form");
+
+        const formSubmitHandler = (e) => {
+          e.preventDefault();
+          const list = document.getElementById("todo");
+          const taskTxt = document.getElementById("task").value;
+
+          const listItem = document.createElement("li");
+
+          listItem.innerHTML = taskTxt;
+
+          list.append(listItem);
+        };
+
+        form.onsubmit = formSubmitHandler;
+      };
+    </script>
+  </head>
+  <body>
+    <h1>To do:</h1>
+    <ul id="todo"></ul>
+
+    <h2>
+      Add new task
+      <form id="form">
+        <input type="text" id="task" />
+        <button type="submit" id="submitBtn">Add</button>
+      </form>
+    </h2>
+  </body>
+</html>
+

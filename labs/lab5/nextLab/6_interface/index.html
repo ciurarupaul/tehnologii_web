@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Formular</title>
+  </head>
+
+  <body>
+    <div>
+      <form>
+        <input id="inputName" type="text" /> <br /><br />
+        <input id="inputAge" type="number" /> <br /><br />
+        <input
+          id="submitData"
+          type="button"
+          value="Submit"
+          onclick="sendData()"
+        />
+        <br /><br />
+      </form>
+
+      <div id="tableData"></div>
+    </div>
+
+    <hr />
+    <h3>Caută o resursă după ID</h3>
+    <form>
+      <label for="inputId">Id:</label>
+      <input id="inputId" type="number" />
+
+      <input
+        id="searchData"
+        type="button"
+        value="Caută"
+        onclick="getDataById()"
+      />
+    </form>
+
+    <div id="resultData"></div>
+  </body>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.23.0/axios.min.js"></script>
+  <script src="index.js"></script>
+</html>

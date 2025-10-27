@@ -1,0 +1,54 @@
+<!-- După ce ați testat exemplul, creați o aplicație simplă de tip agendă ce va conține un tabel cu două coloane (Nume, Telefon) și un formular pentru adăugarea de noi contacte. -->
+
+<!DOCTYPE html>
+<html lang="ro">
+  <head>
+    <title>Agenda</title>
+  </head>
+  <body>
+    <h2>Agenda</h2>
+
+    <form id="contactForm">
+      <label for="nameInput">Nume</label>
+      <input type="text" id="nameInput" />
+
+      <label for="phoneInput">Telefon</label>
+      <input type="tel" id="phoneInput" />
+
+      <button type="submit">Adaugă Contact</button>
+    </form>
+
+    <br />
+
+    <table>
+      <thead>
+        <tr>
+          <th>Nume</th>
+          <th>Telefon</th>
+        </tr>
+      </thead>
+      <tbody id="contacts"></tbody>
+    </table>
+
+    <script>
+      window.onload = () => {
+        const contactForm = document.getElementById("contactForm");
+        const contacts = document.getElementById("contacts");
+
+        contactForm.onsubmit = (event) => {
+          event.preventDefault();
+
+          const nume = document.getElementById("nameInput").value;
+          const telefon = document.getElementById("phoneInput").value;
+
+          contacts.innerHTML += `
+                    <tr>
+                        <td>${nume}</td>
+                        <td>${telefon}</td>
+                    </tr>
+                `;
+        };
+      };
+    </script>
+  </body>
+</html>
