@@ -8,7 +8,7 @@ ENTITIES
     email (unique)
   
   ACTIVITY
-    _id (unique)
+    _id (unique)  
     professorId
     title / description
     startTime / endTime
