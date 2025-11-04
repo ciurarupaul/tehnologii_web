@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body{
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      .sidebar {
+        height: 100%;
+        width: 160px;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        background-color: #111;
+        overflow-x: hidden;
+        padding-top: 20px;
+      }
+
+      .main {
+        margin-left: 160px;
+        font-size: 28px;
+        padding: 0 10px;
+      }
+
+      .sidebar a {
+        padding: 6px 8px 6px 16px;
+        display: block;
+        text-decoration: none;
+        color: #818181;
+        font-size: 28px;
+      }
+
+      .sidebar :hover {
+        color: #f1f1f1 ;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="sidebar">
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="main">
+      <h2>Sidebar Demo</h2>
+      <p>       
+        <a name="about">About</a>
+        <div>
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aut et
+          nesciunt nobis labore beatae, sapiente ipsam aperiam repellendus
+          architecto recusandae in tempora eius. Sapiente, accusamus dolorum
+          veniam amet consequuntur accusantium?
+        </div>
+      </p>
+      <p>       
+        <a name="services">Services</a>
+       <div>
+        <ul>
+          <li>
+            Bread Basket<br/>
+            Assortment of fresh backed fruit breads and muffins 5.50
+          </li>
+          <li>
+            Bread Basket<br/>
+            Assortment of fresh backed fruit breads and muffins 5.50
+          </li>
+          <li>
+            Bread Basket<br/>
+            Assortment of fresh backed fruit breads and muffins 5.50
+          </li>
+          <li>
+            Bread Basket<br/>
+            Assortment of fresh backed fruit breads and muffins 5.50
+          </li>
+          <li>
+            Bread Basket<br/>
+            Assortment of fresh backed fruit breads and muffins 5.50
+          </li>
+          <li>
+            Bread Basket<br/>
+            Assortment of fresh backed fruit breads and muffins 5.50
+          </li>
+        </ul>
+       </div>
+      </p>
+      <p>  
+        <a name="contact">Contact</a>
+        <div>
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aut et
+          nesciunt nobis labore beatae, sapiente ipsam aperiam repellendus
+          architecto recusandae in tempora eius. Sapiente, accusamus dolorum
+          veniam amet consequuntur accusantium?
+        </div>
+      </p>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,90 @@
+<!--  După ce ai testat exemplul, construiește un tabel care sa aiba primul rand de culoare albastră, ultimul  rând de culoare verde și rândurile impare violet ca în imaginea de mai jos. -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- <script type="text/javascript">
+      window.addEventListener("DOMContentLoaded", () => {
+        let evenCollection = document.querySelectorAll(
+          "tbody tr:nth-child(even)"
+        );
+        let oddCollection = document.querySelectorAll(
+          "tbody tr:nth-child(odd)"
+        );
+
+        if (evenCollection && evenCollection.length > 0) {
+          for (let item of evenCollection) {
+            item.bgColor = "red";
+          }
+        }
+
+        if (oddCollection && oddCollection.length > 0) {
+          for (let item of oddCollection) {
+            item.bgColor = "yellow";
+          }
+        }
+      });
+    </script> -->
+    <style></style>
+    <script type="text/javascript">
+      window.addEventListener("DOMContentLoaded", () => {
+        const firstChild = document.querySelector("tbody tr:first-child");
+        const lastChild = document.querySelector("tbody tr:last-child");
+        const oddCollection = document.querySelectorAll(
+          "tbody tr:nth-child(odd)"
+        );
+
+        if (oddCollection && oddCollection.length > 0) {
+          for (let item of oddCollection) {
+            item.bgColor = "pink";
+          }
+        }
+
+        firstChild.bgColor = "blue";
+        lastChild.bgColor = "green";
+      });
+    </script>
+  </head>
+  <body>
+    <table>
+      <thead>
+        <tr>
+          <th>Nume</th>
+          <th>Facultate</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Ionut</td>
+          <td>ASE</td>
+        </tr>
+        <tr>
+          <td>Alex</td>
+          <td>Politehnica</td>
+        </tr>
+        <tr>
+          <td>Mihai</td>
+          <td>Pompieri</td>
+        </tr>
+        <tr>
+          <td>Mihaela</td>
+          <td>Medicina</td>
+        </tr>
+        <tr>
+          <td>Stela</td>
+          <td>Politehnica</td>
+        </tr>
+        <tr>
+          <td>Denis</td>
+          <td>ASE</td>
+        </tr>
+        <tr>
+          <td>Ioana</td>
+          <td>ASE</td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>

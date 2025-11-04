@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .btn:hover {
+        color: blue;
+      }
+
+      input:focus {
+        background-color: yellow;
+      }
+
+      input:required {
+        background-color: red;
+      }
+
+      p::first-line {
+        font-size: 120;
+        font-weight: bold;
+      }
+
+      .checkbox_helper {
+        width: fit-content;
+      }
+
+      .checkbox:checked + .checkbox_helper {
+        background-color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <button class="btn">Click me</button>
+
+    <input type="text" />
+    <input type="text" required />
+
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure facilis
+      accusantium veniam cupiditate repudiandae architecto nihil, vero facere
+      ducimus velit dolorem dolor sit earum ex fuga hic ad veritatis animi?
+    </p>
+
+    <div class="checkbox_helper">
+      <input type="checkbox" class="checkbox" />
+    </div>
+  </body>
+</html>
