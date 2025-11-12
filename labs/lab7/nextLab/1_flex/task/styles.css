@@ -1,0 +1,47 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  height: 100vh;
+  font-family: sans-serif;
+  font-size: 1.6rem;
+  padding: 3.2rem;
+  color: white;
+}
+
+.container {
+  width: max-content;
+  margin: 0 auto;
+  padding: 3.2rem;
+  display: flex;
+  gap: 3.2rem;
+  background-color: #c21322;
+  font-size: 1.8rem;
+  border-radius: 6px;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+}
+
+.column-item {
+  padding: 1.6rem 3.2rem;
+  background-color: orangered;
+  border: 1px solid white;
+  border-radius: 4px;
+}
+
+.column-item:hover {
+  cursor: pointer;
+  background-color: orange;
+  border: 1px solid orange;
+}

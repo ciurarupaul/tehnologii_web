@@ -1,0 +1,63 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 1.6rem;
+  padding: 3.2rem;
+}
+
+.wrapper {
+  background-color: #ccc;
+  display: grid;
+  padding: 3.2rem;
+  grid-template-columns: repeat(8, max-content);
+  justify-content: center;
+  align-content: center;
+}
+
+.wrapper > .box {
+  background-color: white;
+}
+
+.wrapper > .box:nth-child(16n + 2),
+.wrapper > .box:nth-child(16n + 4),
+.wrapper > .box:nth-child(16n + 6),
+.wrapper > .box:nth-child(16n + 8),
+.wrapper > .box:nth-child(16n + 11),
+.wrapper > .box:nth-child(16n + 13),
+.wrapper > .box:nth-child(16n + 15),
+.wrapper > .box:nth-child(16n + 1) {
+  background-color: black;
+}
+
+.top {
+  display: contents;
+  grid-row: 1;
+}
+
+.bottom {
+  display: contents;
+  grid-row: -1;
+}
+
+.wrapper-inner {
+  display: contents;
+}
+
+.box-inner {
+  text-align: center;
+  padding: 0.6rem;
+}
+
+.box {
+  width: 8rem;
+  height: 8rem;
+  margin: 0.1rem;
+}
