@@ -1,0 +1,220 @@
+name: Autograding Tests
+'on':
+- push
+- repository_dispatch
+permissions:
+  checks: write
+  actions: read
+  contents: read
+jobs:
+  run-autograding-tests:
+    runs-on: ubuntu-latest
+    if: github.actor != 'github-classroom[bot]'
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    - name: PARSE-0
+      id: parse-0
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: PARSE-0
+        setup-command: npm install
+        command: npm run test-parse-0
+        timeout: 2
+        max-score: 5
+    - name: PARSE-1
+      id: parse-1
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: PARSE-1
+        setup-command: npm install
+        command: npm run test-parse-1
+        timeout: 2
+        max-score: 5
+    - name: PARSE-2
+      id: parse-2
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: PARSE-2
+        setup-command: npm install
+        command: npm run test-parse-2
+        timeout: 2
+        max-score: 5
+    - name: PARSE-3
+      id: parse-3
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: PARSE-3
+        setup-command: npm install
+        command: npm run test-parse-3
+        timeout: 2
+        max-score: 5
+    - name: PARSE-4
+      id: parse-4
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: PARSE-4
+        setup-command: npm install
+        command: npm run test-parse-4
+        timeout: 2
+        max-score: 5
+    - name: PARSE-5
+      id: parse-5
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: PARSE-5
+        setup-command: npm install
+        command: npm run test-parse-5
+        timeout: 2
+        max-score: 5
+    - name: PARSE-6
+      id: parse-6
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: PARSE-6
+        setup-command: npm install
+        command: npm run test-parse-6
+        timeout: 2
+        max-score: 5
+    - name: PARSE-7
+      id: parse-7
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: PARSE-7
+        setup-command: npm install
+        command: npm run test-parse-7
+        timeout: 2
+        max-score: 5
+    - name: PARSE-8
+      id: parse-8
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: PARSE-8
+        setup-command: npm install
+        command: npm run test-parse-8
+        timeout: 2
+        max-score: 5
+    - name: PARSE-9
+      id: parse-9
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: PARSE-9
+        setup-command: npm install
+        command: npm run test-parse-9
+        timeout: 2
+        max-score: 5
+    - name: RENDER-0
+      id: render-0
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: RENDER-0
+        setup-command: npm install
+        command: npm run test-render-0
+        timeout: 2
+        max-score: 5
+    - name: RENDER-1
+      id: render-1
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: RENDER-1
+        setup-command: npm install
+        command: npm run test-render-1
+        timeout: 2
+        max-score: 5
+    - name: RENDER-2
+      id: render-2
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: RENDER-2
+        setup-command: npm install
+        command: npm run test-render-2
+        timeout: 2
+        max-score: 5
+    - name: RENDER-3
+      id: render-3
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: RENDER-3
+        setup-command: npm install
+        command: npm run test-render-3
+        timeout: 2
+        max-score: 5
+    - name: RENDER-4
+      id: render-4
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: RENDER-4
+        setup-command: npm install
+        command: npm run test-render-4
+        timeout: 2
+        max-score: 5
+    - name: RENDER-5
+      id: render-5
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: RENDER-5
+        setup-command: npm install
+        command: npm run test-render-5
+        timeout: 2
+        max-score: 5
+    - name: RENDER-6
+      id: render-6
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: RENDER-6
+        setup-command: npm install
+        command: npm run test-render-6
+        timeout: 2
+        max-score: 5
+    - name: RENDER-7
+      id: render-7
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: RENDER-7
+        setup-command: npm install
+        command: npm run test-render-7
+        timeout: 2
+        max-score: 5
+    - name: RENDER-8
+      id: render-8
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: RENDER-8
+        setup-command: npm install
+        command: npm run test-render-8
+        timeout: 2
+        max-score: 5
+    - name: RENDER-9
+      id: render-9
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: RENDER-9
+        setup-command: npm install
+        command: npm run test-render-9
+        timeout: 2
+        max-score: 5
+    - name: Autograding Reporter
+      uses: classroom-resources/autograding-grading-reporter@v1
+      env:
+        PARSE-0_RESULTS: "${{steps.parse-0.outputs.result}}"
+        PARSE-1_RESULTS: "${{steps.parse-1.outputs.result}}"
+        PARSE-2_RESULTS: "${{steps.parse-2.outputs.result}}"
+        PARSE-3_RESULTS: "${{steps.parse-3.outputs.result}}"
+        PARSE-4_RESULTS: "${{steps.parse-4.outputs.result}}"
+        PARSE-5_RESULTS: "${{steps.parse-5.outputs.result}}"
+        PARSE-6_RESULTS: "${{steps.parse-6.outputs.result}}"
+        PARSE-7_RESULTS: "${{steps.parse-7.outputs.result}}"
+        PARSE-8_RESULTS: "${{steps.parse-8.outputs.result}}"
+        PARSE-9_RESULTS: "${{steps.parse-9.outputs.result}}"
+        RENDER-0_RESULTS: "${{steps.render-0.outputs.result}}"
+        RENDER-1_RESULTS: "${{steps.render-1.outputs.result}}"
+        RENDER-2_RESULTS: "${{steps.render-2.outputs.result}}"
+        RENDER-3_RESULTS: "${{steps.render-3.outputs.result}}"
+        RENDER-4_RESULTS: "${{steps.render-4.outputs.result}}"
+        RENDER-5_RESULTS: "${{steps.render-5.outputs.result}}"
+        RENDER-6_RESULTS: "${{steps.render-6.outputs.result}}"
+        RENDER-7_RESULTS: "${{steps.render-7.outputs.result}}"
+        RENDER-8_RESULTS: "${{steps.render-8.outputs.result}}"
+        RENDER-9_RESULTS: "${{steps.render-9.outputs.result}}"
+      with:
+        runners: parse-0,parse-1,parse-2,parse-3,parse-4,parse-5,parse-6,parse-7,parse-8,parse-9,render-0,render-1,render-2,render-3,render-4,render-5,render-6,render-7,render-8,render-9

@@ -1,0 +1,28 @@
+{
+  "scripts": {
+    "test": "jest",
+    "test-parse-0": "jest --silent=false --verbose tests/parse-0.test.js",
+    "test-parse-1": "jest --silent=false --verbose tests/parse-1.test.js",
+    "test-parse-2": "jest --silent=false --verbose tests/parse-2.test.js",
+    "test-parse-3": "jest --silent=false --verbose tests/parse-3.test.js",
+    "test-parse-4": "jest --silent=false --verbose tests/parse-4.test.js",
+    "test-parse-5": "jest --silent=false --verbose tests/parse-5.test.js",
+    "test-parse-6": "jest --silent=false --verbose tests/parse-6.test.js",
+    "test-parse-7": "jest --silent=false --verbose tests/parse-7.test.js",
+    "test-parse-8": "jest --silent=false --verbose tests/parse-8.test.js",
+    "test-parse-9": "jest --silent=false --verbose tests/parse-9.test.js",
+    "test-render-0": "jest --silent=false --verbose tests/render-0.test.js",
+    "test-render-1": "jest --silent=false --verbose tests/render-1.test.js",
+    "test-render-2": "jest --silent=false --verbose tests/render-2.test.js",
+    "test-render-3": "jest --silent=false --verbose tests/render-3.test.js",
+    "test-render-4": "jest --silent=false --verbose tests/render-4.test.js",
+    "test-render-5": "jest --silent=false --verbose tests/render-5.test.js",
+    "test-render-6": "jest --silent=false --verbose tests/render-6.test.js",
+    "test-render-7": "jest --silent=false --verbose tests/render-7.test.js",
+    "test-render-8": "jest --silent=false --verbose tests/render-8.test.js",
+    "test-render-9": "jest --silent=false --verbose tests/render-9.test.js"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
+}
