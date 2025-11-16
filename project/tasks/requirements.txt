@@ -1,0 +1,42 @@
+[Objective]
+Developing a web application which enables users to provide continous feedback to an activity
+
+[Description]
+The application must enable users to provide continuous feedback to a course or tutorial.
+
+The application is built on a Single Page Application architecture and is accessible from the browser on the desktop, mobile devices or tablets (depending on user preference).
+(Minimal) functionality
+
+As a professor i can define an activity at a particular date, with a description  and a unique access code for the activity. The activity is accessible for a set period of time.
+As a student, i can input a code to participate in a defined activity. The code can be used for the duration of the activity.
+
+As a student who has accessed an activity i have access to an interface split into 4 rectagles each containing an emoticon (smiley face, frowny face, surprised face, confused face). At any time i can press an emoticon to react to the activity. As a student i can add an unlimited number of feedback instances.
+As a professor i can see the continuous feedback stream, with each feedback instance associated to the time it was generated at. I can only see the feedback as anonymous. For myself the feedback is available both during and after the activity.
+
+
+General template
+
+[General objective]
+Developing an application on one of the specified topics, with a RESTful backend which accessed data stored in a relational database through a persistence API as well as data from an external service and an SPA front-end built with a component based framework.
+
+[Technological constraints]
+Front-end must be build with a component based framework(React.js, which is covered in the course, or Angular 2+, Vue.js)
+Back-end must have a REST interface and must be implemented in node.js
+Storage must be over a relational database and access to the database must be done via an ORM
+Code must be versioned in a git repository with incremental commits with clear descriptions
+The application must me deployed on a server (you can use one of the services which have a free tier for students e.g. Azure, AWS etc)
+
+[Code quality and style]
+Real application, coherent from a business logic standpoint
+The code must be well organized, variable names should be suggestive of their purpose and use a naming standard (e.g. camel case), the code should be indented for readability
+The code must be documented with comments for each class, function etc.
+Non working applications receive no points. However, functionality of the front-end or back-end can be demonstrated separately
+Opțional: test coverage
+
+
+[Partial deliverables] 
+- 3 stages (delivery is done by supplying a link to a repository through a google form; the coordinating university staff member will be invited as a contributor to the repository) 
+- non delivery of an intermediary stage reduces the maximum receivable points by 10% (i.e. if the maximum grade for the project is 5 points, delivering it directly at the end means the maximum points receivable is 4)
+  Detailed specifications, project plan, presence of a git project - 16.11.2025
+  Functional RESTful service present in the repository + instructions to run said service -  06.12.2025
+  Complete application - delivered in the last tutorial (demo) - last tutorial
