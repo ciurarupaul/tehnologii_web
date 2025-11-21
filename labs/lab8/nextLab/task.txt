@@ -1,0 +1,6 @@
+// adaugă un nou handler de erori, înaintea celui existent, care să afișeze la consolă stackul erorii (err.stack)
+
+app.use((err, req, res, next) => {
+  console.log(err.stack);
+  res.status(500).json({ error: "Something broke!" });
+});
