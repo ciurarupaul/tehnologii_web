@@ -1,4 +1,5 @@
 {
+  "name": "@lab7/homework-2",
   "scripts": {
     "test": "jest",
     "test-parse-0": "jest --silent=false --verbose tests/parse-0.test.js",

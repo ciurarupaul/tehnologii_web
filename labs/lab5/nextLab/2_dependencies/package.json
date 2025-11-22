@@ -1,5 +1,5 @@
 {
-  "name": "2_dependencies",
+  "name": "@lab5/dependencies",
   "type": "module",
   "main": "index.js",
   "dependencies": {

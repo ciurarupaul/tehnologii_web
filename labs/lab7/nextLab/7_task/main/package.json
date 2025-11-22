@@ -1,7 +1,5 @@
 {
-  "devDependencies": {
-    "jest": "^24.9.0"
-  },
+  "name": "@lab7/task",
   "scripts": {
     "test": "jest"
   }
