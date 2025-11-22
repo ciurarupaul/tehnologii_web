@@ -1,43 +1,41 @@
 {
+  "extends": "../tsconfig.json",
   "compilerOptions": {
-    /* base options */
-    "target": "es2022",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    // env
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "jsx": "preserve",
-    /* module system */
     "module": "esnext",
     "moduleResolution": "bundler",
-    /* next/tooling */
-    "isolatedModules": true,
+    "allowJs": true,
+
+    // next specifics
     "noEmit": true,
     "incremental": true,
     "tsBuildInfoFile": ".tsbuildinfo",
-    /* interop & convenience */
-    "esModuleInterop": true, // mend some fences between CommonJS and ESModules
-    "allowJs": true, // allow .js and .json imports
-    "resolveJsonModule": true, // allow .js and .json imports
-    "verbatimModuleSyntax": true, // for import/export type
-    /* strictness */
-    "strict": true, // enables all strict type checking options
-    "noUncheckedIndexedAccess": true, // prevents dev from accessing array/object idx without checking its existance
-    "skipLibCheck": true, // dont check .d.ts files
-    /* path alias */
-    "paths": {
-      "@/*": ["./src/*"]
-    },
     "plugins": [
       {
         "name": "next"
       }
-    ]
+    ],
+
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ]
+    },
   },
+
   "include": [
+    "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "scss.d.ts",
-    "next-env.d.ts",
-    ".next/types/**/*.ts",
-    "jest.config.ts"
+    ".next/types/**/*.ts"
   ],
-  "exclude": ["node_modules"]
+  "exclude": [
+    "node_modules"
+  ]
 }

@@ -1,0 +1,24 @@
+{
+  "$schema": "https://turborepo.com/schema.json",
+  "tasks": {
+    "build": {
+      "dependsOn": ["^build"],
+      "outputs": [".next/**", "!.next/cache/**", "dist/**"]
+    },
+    "lint": {
+      "dependsOn": []
+    },
+    "dev": {
+      "cache": false,
+      "persistent": true
+    },
+    "type-coverage": {
+      "dependsOn": [],
+      "outputs": ["ts-coverage.json", "type-coverage-report.json"]
+    },
+    "type-coverage-report": {
+      "dependsOn": [],
+      "outputs": ["coverage-ts/**"]
+    }
+  }
+}

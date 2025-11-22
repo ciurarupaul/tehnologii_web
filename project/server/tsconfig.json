@@ -1,16 +1,17 @@
 {
+  "extends": "../tsconfig.json",
   "compilerOptions": {
-    "target": "es2020",
-    "module": "nodenext",
-    "moduleResolution": "nodenext",
+    // env
+    "lib": ["es2022"], 
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "types": ["node"],
+
     "outDir": "./dist",
     "rootDir": "./src",
-    "esModuleInterop": true,
-    "resolveJsonModule": true,
-    "strict": true,
     "sourceMap": true,
-    "skipLibCheck": true
+    "noEmit": false
   },
-  "include": ["src/**/*.ts"],
+  "include": ["src/**/*"],
   "exclude": ["node_modules", "dist"]
 }
