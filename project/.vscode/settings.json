@@ -5,7 +5,8 @@
     "**/node_modules": true,
     "**/package-lock.json": true,
     "**/.next": true,
-    ".turbo": true
+    "**/.turbo": true,
+    "**/*.d.ts": true
   },
 
   // base eslint configs

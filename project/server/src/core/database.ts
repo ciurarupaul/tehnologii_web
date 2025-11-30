@@ -1,17 +1,8 @@
-import dotenv from "dotenv";
+import { Sequelize } from 'sequelize';
 
-dotenv.config();
-
-const databaseUrl = process.env.DATABASE;
-
-if (!databaseUrl) {
-  console.error("Database connection failed!");
-  process.exit(1);
-}
-
-const database = databaseUrl.replace(
-  "<db_password>",
-  process.env.DATABASE_PASSWORD || ""
-);
+const database = new Sequelize({
+  dialect: 'sqlite',
+  storage: './sqlite/database.db',
+});
 
 export default database;

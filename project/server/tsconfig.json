@@ -1,16 +1,23 @@
 {
   "extends": "../tsconfig.json",
   "compilerOptions": {
-    // env
+    "composite": true, 
+    
+    // node
     "lib": ["es2022"], 
-    "module": "NodeNext",
-    "moduleResolution": "NodeNext",
+    "module": "esnext",
+    "moduleResolution": "bundler", 
     "types": ["node"],
 
     "outDir": "./dist",
     "rootDir": "./src",
     "sourceMap": true,
-    "noEmit": false
+    "noEmit": false,
+    
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules", "dist"]

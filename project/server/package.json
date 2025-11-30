@@ -12,8 +12,8 @@
     ]
   },
   "scripts": {
-    "dev": "nodemon --exec ts-node src/core/server.ts",
-    "build": "tsc",
+    "dev": "nodemon --exec tsx src/core/server.ts",
+    "build": "tsx",
     "ts-coverage-report": "typescript-coverage-report",
     "ts-coverage": "type-coverage --json-output > ts-coverage.json"
   },
@@ -22,7 +22,9 @@
     "cors": "^2.8.5",
     "dotenv": "^16.6.1",
     "express": "^4.21.2",
+    "helmet": "^8.1.0",
     "mongoose": "^8.20.1",
+    "sequelize": "^6.37.7",
     "zod": "^3.25.0"
   },
   "devDependencies": {
@@ -31,7 +33,7 @@
     "@types/express": "^5.0.5",
     "@types/node": "^24.10.1",
     "nodemon": "^3.1.11",
-    "ts-node": "^10.9.2",
+    "tsx": "^4.20.6",
     "type-coverage": "^2.29.7",
     "typescript": "^5.9.3",
     "typescript-coverage-report": "^1.1.1"

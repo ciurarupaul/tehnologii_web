@@ -19,6 +19,7 @@
   "dependencies": {
     "next": "^15.5.4",
     "sass": "^1.93.2",
+    "sqlite3": "^5.1.7",
     "zod": "^3.25.0"
   },
   "devDependencies": {

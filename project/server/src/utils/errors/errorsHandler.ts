@@ -1,26 +1,34 @@
-import AppError from "./appError";
+import type {
+  DatabaseError,
+  ForeignKeyConstraintError,
+  UniqueConstraintError,
+  ValidationError,
+} from 'sequelize';
 
-export const handleCastErrorDB = (err: any): AppError => {
-  const message = `Invalid ${err.path}: ${err.value}.`;
+import AppError from './appError';
+
+// sequelize validation errors
+export function handleSequelizeValidationError(err: ValidationError): AppError {
+  const errors = err.errors.map((el) => el.message);
+  const message = `Invalid input data. ${errors.join('. ')}`;
   return new AppError(message, 400);
-};
+}
 
-export const handleDuplicateFieldsDB = (err: any): AppError => {
-  const match = err.message.match(/(["'])(\\?.)*?\1/);
-  const value = match ? match[0] : "duplicate";
-  return new AppError(
-    `Duplicate field value: ${value}. Please use another.`,
-    400
-  );
-};
+// sequelize specific errors
+export function handleSequelizeUniqueConstraintError(err: UniqueConstraintError): AppError {
+  const value = err.errors[0]?.value ?? 'unknown';
+  const field = err.errors[0]?.path ?? 'unknown';
+  const message = `Duplicate field value: "${value}" for field "${field}". Please use another.`;
+  return new AppError(message, 400);
+}
 
-export const handleValidationErrorDB = (err: any): AppError => {
-  const errors = Object.values(err.errors || {}).map((e: any) => e.message);
-  return new AppError(`Invalid input. ${errors.join(" ")}`, 400);
-};
+// fk errors
+export function handleSequelizeForeignKeyConstraintError(err: ForeignKeyConstraintError): AppError {
+  const message = `Invalid reference. The ${err.fields ? err.fields[0] : 'field'} you provided does not exist in the database.`;
+  return new AppError(message, 400);
+}
 
-export const handleJWTError = (): AppError =>
-  new AppError("Invalid token. Please log in again.", 401);
-
-export const handleJWTExpiredError = (): AppError =>
-  new AppError("Token expired. Please log in again.", 401);
+// general database errors
+export function handleSequelizeDatabaseError(err: DatabaseError): AppError {
+  return new AppError(`Database error: ${err.message}`, 400);
+}
