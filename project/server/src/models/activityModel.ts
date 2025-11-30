@@ -16,6 +16,8 @@ const Activity = database.define(
       type: DataTypes.UUID,
       defaultValue: DataTypes.UUIDV4,
       primaryKey: true,
+      allowNull: false,
+      unique: true,
     },
     professorId: {
       type: DataTypes.UUID,

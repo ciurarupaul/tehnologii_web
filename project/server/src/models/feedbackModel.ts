@@ -9,6 +9,8 @@ const Feedback = database.define(
       type: DataTypes.UUID,
       defaultValue: DataTypes.UUIDV4,
       primaryKey: true,
+      allowNull: false,
+      unique: true,
     },
     activityId: {
       type: DataTypes.UUID,

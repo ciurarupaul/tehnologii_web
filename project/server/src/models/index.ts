@@ -1,6 +1,6 @@
-import Activity from './activity';
-import AppUser from './appUser';
-import Feedback from './feedback';
+import Activity from './activityModel';
+import AppUser from './appUserModel';
+import Feedback from './feedbackModel';
 
 // link professor to activity
 Activity.belongsTo(AppUser, {

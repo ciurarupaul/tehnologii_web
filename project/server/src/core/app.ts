@@ -1,8 +1,11 @@
+import { toNodeHandler } from 'better-auth/node';
 import compression from 'compression';
 import cors from 'cors';
 import express from 'express';
 import helmet from 'helmet';
 
+import auth from '@/lib/auth';
+import userRouter from '@/routes/userRoutes';
 import globalErrorHandler, { notFoundHandler } from '@/utils/errors/globalErrorHandler';
 
 import config from './config';
@@ -23,6 +26,9 @@ app.use(
   }),
 );
 
+// handle better-auth routes - use before parsers
+app.all('/api/auth/*splat', toNodeHandler(auth));
+
 // parsing
 app.use(express.json({ limit: '10kb' }));
 app.use(express.urlencoded({ extended: true, limit: '10kb' }));
@@ -30,6 +36,7 @@ app.use(express.urlencoded({ extended: true, limit: '10kb' }));
 app.use(compression());
 
 // routes
+app.use('/api/users', userRouter);
 
 // error boundaries
 app.use(notFoundHandler);
