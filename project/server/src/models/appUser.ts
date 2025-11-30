@@ -11,8 +11,7 @@ const AppUser = database.define(
       primaryKey: true,
     },
     role: {
-      type: DataTypes.ENUM,
-      values: ['student', 'professor', 'admin'],
+      type: DataTypes.ENUM('student', 'professor', 'admin'),
       defaultValue: 'student',
       allowNull: false,
     },

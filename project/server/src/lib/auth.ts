@@ -16,12 +16,3 @@ const auth = betterAuth({
 });
 
 export default auth;
-
-/*
-steps (from no db file):
-  1. mkdir database
-  2. npx @better-auth/cli@latest generate --config ./src/lib/auth.ts --output ./database/migrations
-  (script)  npm run db:generate
-  3. npx @better-auth/cli migrate --config ./src/lib/auth.ts --migration ./better-auth_migrations
-  (script)npm run db:migrate
-*/
