@@ -1,0 +1,15 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "project"
+		}
+	],
+	"settings": {
+    "files.exclude": {
+      "project": true	// hide the project folder in the root
+    }
+  }
+}

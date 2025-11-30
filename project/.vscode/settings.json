@@ -3,8 +3,9 @@
     "**/.git": true,
     "**/.DS_Store": true,
     "**/node_modules": true,
+    "**/package-lock.json": true,
     "**/.next": true,
-    "**/package-lock.json": true
+    ".turbo": true
   },
 
   // base eslint configs
