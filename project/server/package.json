@@ -15,9 +15,17 @@
     "dev": "nodemon --exec tsx src/core/server.ts",
     "build": "tsx",
     "ts-coverage-report": "typescript-coverage-report",
-    "ts-coverage": "type-coverage --json-output > ts-coverage.json"
+    "ts-coverage": "type-coverage --json-output > ts-coverage.json",
+
+    "db:init": "node -e \"require('fs').mkdirSync('database', {recursive:true})\"",
+    "db:generate": "npx @better-auth/cli generate --config ./src/lib/auth.ts",
+    "db:migrate": "npx @better-auth/cli migrate --config ./src/lib/auth.ts",
+
+    "db:setup": "npm run db:init && npm run db:generate && npm run db:migrate"
   },
   "dependencies": {
+    "better-auth": "^1.4.3",
+    "better-sqlite3": "^12.5.0",
     "compression": "^1.8.1",
     "cors": "^2.8.5",
     "dotenv": "^16.6.1",
@@ -28,6 +36,7 @@
     "zod": "^3.25.0"
   },
   "devDependencies": {
+    "@types/better-sqlite3": "^7.6.13",
     "@types/compression": "^1.8.1",
     "@types/cors": "^2.8.19",
     "@types/express": "^5.0.5",

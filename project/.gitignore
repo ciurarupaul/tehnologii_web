@@ -40,3 +40,10 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# database data
+database/*.db
+database/*.db-journal
+database/*.db-wal
+
+*.exe
