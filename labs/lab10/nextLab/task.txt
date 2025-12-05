@@ -1,0 +1,46 @@
+// implementati export (se vor extrage parintii cu copiii lor de forma GET / care va intoarce in body un array de university unde university contine un array de students si courses plus enrollements ca perechi de id student si course
+
+app.get('/', async (req, res, next) => {
+  try {
+    const result = [];
+
+    for (let u of await University.findAll()) {
+      const university = {
+        name: u.universityName,
+        students: [],
+        courses: [],
+        enrollements: []
+      };
+
+      for (let c of await u.getCourses()) {
+        university.courses.push({
+          key: c.id,
+          name: c.name
+        });
+
+        for (let s of await c.getStudents()) {
+          university.enrollements.push({
+            courseKey: c.id,
+            studentKey: s.id
+          });
+        }
+      }
+      
+      for (let s of await u.getStudents()) {
+        university.students.push({
+          key: s.id,
+          firstName: s.firstName,
+          lastName: s.lastName,
+          status: s.studentStatus
+        });
+      }
+
+      result.push(university);
+    }
+
+    result.length > 0 ? res.status(200).json(result) : res.sendStatus(204);
+
+  } catch (error) {
+    next(error);
+  }
+});

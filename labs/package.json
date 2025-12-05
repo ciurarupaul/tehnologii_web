@@ -6,7 +6,7 @@
     "body-parser": "^2.2.0",
     "cors": "^2.8.5",
     "crypto-js": "^4.2.0",
-    "express": "^5.1.0",
+    "express": "^5.2.0",
     "fs": "^0.0.1-security",
     "node-fetch": "^3.3.2",
     "sequelize": "^6.37.7",
