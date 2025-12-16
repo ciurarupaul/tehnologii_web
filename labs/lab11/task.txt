@@ -1,0 +1,35 @@
+function RegularUser({ item }) {
+  return (
+    <div className="user regular-user">
+      <div className="username">{item.username}</div>
+      <div className="fullName">{item.fullName}</div>
+      <small>regular user</small>
+    </div>
+  );
+}
+
+export default RegularUser;
+
+function SuperUser({ item }) {
+  return (
+    <div className="user super-user">
+      <div className="username">⭐ {item.username} ⭐</div>
+      <div className="fullName">{item.fullName}</div>
+      <small style={{ color: "goldenrod" }}>super user</small>
+    </div>
+  );
+}
+
+export default SuperUser;
+
+return (
+    <div className="user-list">
+      {users.map((user) => {
+        if (user.type === "super-user") {
+          return <SuperUser key={user.id} item={user} />;
+        } else {
+          return <RegularUser key={user.id} item={user} />;
+        }
+      })}
+    </div>
+  );

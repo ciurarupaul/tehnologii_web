@@ -1,0 +1,38 @@
+:focus-visible {
+  *,
+  *::after,
+  *::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+  }
+  outline: 1px solid var(--primary);
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  box-sizing: border-box;
+  background-color: #f8f9fa;
+  color: #212529;
+  margin: 0 auto;
+  font-size: 1.6rem;
+
+  height: 100dvh;
+  max-height: 100dvh;
+  width: 100%;
+  max-width: 160rem;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  flex-grow: 1;
+}
+
+.reset {
+  all: unset;
+}
