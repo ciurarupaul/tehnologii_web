@@ -1,11 +1,12 @@
 import type { ReactNode } from 'react';
 
 import { headers } from 'next/headers';
+import { redirect } from 'next/navigation';
 
 import Footer from '@/components/layout/Footer';
-import Header from '@/components/layout/Headers';
 
 import '../scss/main.scss';
+import Header from '@/components/layout/Headers';
 import { fetchCurrentUser } from '@/features/login/user.service';
 import { workSans } from '@/utils/fonts';
 
@@ -17,8 +18,11 @@ type Props = {
 
 export default async function RootLayout({ children }: Readonly<Props>) {
   // get user
-  console.log('user fetched in root layout');
   const user = await fetchCurrentUser({ headers: await headers() });
+
+  if (!user) {
+    redirect('/login');
+  }
 
   return (
     <html lang='en'>
