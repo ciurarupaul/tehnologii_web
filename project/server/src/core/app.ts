@@ -5,6 +5,7 @@ import express from 'express';
 import helmet from 'helmet';
 
 import auth from '@/lib/auth';
+import adminRouter from '@/routes/adminRoutes';
 import userRouter from '@/routes/userRoutes';
 import globalErrorHandler, { notFoundHandler } from '@/utils/errors/globalErrorHandler';
 
@@ -36,6 +37,7 @@ app.use(express.urlencoded({ extended: true, limit: '10kb' }));
 app.use(compression());
 
 // routes
+app.use('/api/admin', adminRouter);
 app.use('/api/users', userRouter);
 
 // error boundaries

@@ -1,0 +1,16 @@
+@use '../../scss/mixins';
+
+.admin {
+  &__item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--background--lines);
+    padding: 1rem 0;
+
+    &__buttons {
+      display: flex;
+      gap: 1rem;
+    }
+  }
+}

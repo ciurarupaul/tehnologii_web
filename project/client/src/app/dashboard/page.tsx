@@ -1,22 +1,15 @@
-'use client';
-
+import { headers } from 'next/headers';
 import { redirect } from 'next/navigation';
 
-import { useUserContext } from '@/data/UserContext';
-import ProfessorDashboard from '@/features/dashboard/ProfessorDashboard';
-import StudentDashboard from '@/features/dashboard/StudentDashboard';
+import { fetchCurrentUser } from '@/features/login/user.service';
 
-export default function Page() {
-  const { user } = useUserContext();
+export default async function DashboardPage() {
+  const headersList = await headers();
+  const user = await fetchCurrentUser({ headers: headersList });
 
   if (!user) {
     redirect('/login');
   }
 
-  return (
-    <>
-      {user.role === 'student' && <StudentDashboard />}
-      {user.role === 'professor' && <ProfessorDashboard />}
-    </>
-  );
+  redirect(`/dashboard/${user.role}`);
 }

@@ -6,7 +6,7 @@ import { redirect } from 'next/navigation';
 import Footer from '@/components/layout/Footer';
 
 import '../scss/main.scss';
-import Header from '@/components/layout/Headers';
+import Header from '@/components/layout/Header';
 import { fetchCurrentUser } from '@/features/login/user.service';
 import { workSans } from '@/utils/fonts';
 
