@@ -17,6 +17,7 @@
     "ts-coverage": "type-coverage --json-output > ts-coverage.json"
   },
   "dependencies": {
+    "better-auth": "^1.4.10",
     "next": "^15.5.4",
     "sass": "^1.93.2",
     "sqlite3": "^5.1.7",

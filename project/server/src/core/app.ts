@@ -27,7 +27,7 @@ app.use(
 );
 
 // handle better-auth routes - use before parsers
-app.all('/api/auth/*splat', toNodeHandler(auth));
+app.all('/api/auth/**', toNodeHandler(auth));
 
 // parsing
 app.use(express.json({ limit: '10kb' }));
