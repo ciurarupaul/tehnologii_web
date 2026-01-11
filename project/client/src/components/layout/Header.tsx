@@ -1,6 +1,6 @@
 'use client';
 
-import { LogIn, LogOut } from 'lucide-react';
+import { LogOut } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
@@ -15,7 +15,7 @@ export default function Header() {
 
   const dashboards = [
     { name: 'Student', path: '/dashboard/student', role: 'student' },
-    { name: 'Profesor', path: '/dashboard/professor', role: 'professor' },
+    { name: 'Professor', path: '/dashboard/professor', role: 'professor' },
     { name: 'Admin', path: '/dashboard/admin', role: 'admin' },
   ];
 
@@ -24,14 +24,17 @@ export default function Header() {
       {user
         ? (
           <div className={styles['header__container--authenticated']}>
-            <div className={styles.header__user}>
-              Salut,
+            <div className={styles.header__greeting}>
+              Hi,
               {' '}
               {user.firstName}
               {' '}
-              (
-              {user.role}
-              )
+
+              <span>
+                (
+                {user.role}
+                )
+              </span>
             </div>
 
             <nav className={styles.header__nav}>
@@ -55,10 +58,9 @@ export default function Header() {
           </div>
         )
         : (
-          <Link href='/login' className={styles['header__container--anon']}>
-            <LogIn />
-            Login
-          </Link>
+          <div>
+            Please login to continue
+          </div>
         )}
     </div>
   );

@@ -13,7 +13,6 @@ export async function fetchAllUsers({ headers }: Readonly<Props>): Promise<UserL
     options: {
       headers,
       schema: userListSchema,
-      cache: 'no-store',
     },
   });
 

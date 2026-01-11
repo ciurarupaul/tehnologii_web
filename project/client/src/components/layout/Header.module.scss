@@ -26,6 +26,16 @@
     gap: 1rem;
   }
 
+  &__greeting {
+    @include mixins.flex-center();
+    gap: 1rem;
+
+    span {
+      opacity: 0.5;
+      font-size: var(--fontsize--small);
+    }
+  }
+
   &__nav {
     margin: 0 auto;
     @include mixins.flex-center();

@@ -2,7 +2,6 @@
 
 import type { ReactNode } from 'react';
 
-import { useRouter } from 'next/navigation';
 import {
   createContext,
   useContext,
@@ -17,7 +16,7 @@ import { authClient } from '@/lib/betterAuth';
 type UserContextProps = {
   user: User | null
   setUser: (user: User | null) => void
-  login: () => void
+  login: (provider: 'google' | 'github') => void
   logout: () => void
 };
 
@@ -32,26 +31,25 @@ function UserProvider({
 }) {
   const [user, setUser] = useState<User | null>(initialUser);
 
-  async function login() {
+  async function login(provider: 'google' | 'github') {
     await authClient.signIn.social({
-      provider: 'google',
+      provider,
       callbackURL: `${process.env.NEXT_PUBLIC_CLIENT_URL}`,
       errorCallbackURL: `${process.env.NEXT_PUBLIC_CLIENT_URL}/error`,
       disableRedirect: false,
     });
   }
 
-  const router = useRouter();
   async function logout() {
     try {
-      setUser(null); // optimistic ui update
-      router.push('/'); // immediately redirect
       await authClient.signOut();
-      router.refresh();
+      setUser(null); // optimistic ui update
+      window.location.href = '/login';
     }
     catch (err) {
       console.error('Logout failed:', err);
-      globalThis.location.reload();
+      setUser(null);
+      window.location.href = '/login';
     }
   }
 

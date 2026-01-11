@@ -21,6 +21,10 @@ const auth = betterAuth({
       clientId: config.googleClientId,
       clientSecret: config.googleClientSecret,
     },
+    github: {
+      clientId: config.githubClientId,
+      clientSecret: config.githubClientSecret,
+    },
   },
 });
 
