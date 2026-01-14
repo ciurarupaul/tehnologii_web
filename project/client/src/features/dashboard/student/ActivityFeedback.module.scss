@@ -1,0 +1,139 @@
+@use '../../../scss/mixins';
+
+.feedback {
+  max-width: 100rem;
+  margin: 0 auto;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 2rem;
+    padding-bottom: 3rem;
+    margin-bottom: 3rem;
+    border-bottom: 1px solid var(--background--lines);
+
+    @include mixins.respond(mobile) {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    h2 {
+      font-size: var(--fontsize--xlarge);
+      font-weight: 500;
+      margin-bottom: 0.8rem;
+    }
+
+    p {
+      font-size: var(--fontsize--medium);
+      color: var(--secondary);
+      line-height: 1.5;
+    }
+  }
+
+  &__count {
+    padding: 0.8rem 1.6rem;
+    background-color: var(--neutral--background);
+    border-radius: 4px;
+    white-space: nowrap;
+
+    span {
+      font-size: var(--fontsize--small);
+      font-weight: 500;
+      color: var(--neutral--text);
+    }
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    margin-bottom: 3rem;
+
+    @include mixins.respond(mobile) {
+      grid-template-columns: 1fr;
+      gap: 1.6rem;
+    }
+  }
+
+  &__button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.6rem;
+    padding: 4rem 2rem;
+    min-height: 20rem;
+    border: 2px solid var(--background--lines);
+    border-radius: 4px;
+    background-color: var(--background);
+    color: var(--primary);
+    font-size: var(--fontsize--large);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+
+    @include mixins.respond(mobile) {
+      min-height: 16rem;
+      padding: 3rem 2rem;
+    }
+
+    &:hover:not(:disabled) {
+      transform: translateY(-4px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+      opacity: 0.6;
+    }
+
+    &--active {
+      transform: scale(0.95);
+    }
+
+    &--green {
+      &:hover:not(:disabled) {
+        border-color: var(--green);
+        background-color: var(--success--background);
+        color: var(--green);
+      }
+    }
+
+    &--red {
+      &:hover:not(:disabled) {
+        border-color: var(--red);
+        background-color: var(--error--background);
+        color: var(--red);
+      }
+    }
+
+    &--warning {
+      &:hover:not(:disabled) {
+        border-color: #e47112;
+        background-color: var(--warning--background);
+        color: #e47112;
+      }
+    }
+
+    &--neutral {
+      &:hover:not(:disabled) {
+        border-color: var(--secondary);
+        background-color: var(--neutral--background);
+        color: var(--secondary);
+      }
+    }
+  }
+
+  &__info {
+    text-align: center;
+    padding: 2rem;
+    background-color: var(--background--hover);
+    border-radius: 4px;
+
+    p {
+      font-size: var(--fontsize--small);
+      color: var(--secondary);
+    }
+  }
+}

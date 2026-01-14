@@ -1,7 +1,9 @@
 import type { Activity, ActivityList } from '@/types/schemas/activity.schema';
+import type { FeedbackList } from '@/types/schemas/feedback.schema';
 
 import { fetchAndValidate } from '@/features/login/user.utils';
 import { activityListSchema, activitySchema } from '@/types/schemas/activity.schema';
+import { feedbackListSchema } from '@/types/schemas/feedback.schema';
 
 export async function fetchMyActivities({
   headers,
@@ -101,4 +103,23 @@ export async function deleteActivity(id: string): Promise<void> {
     const errorData = await response.json().catch(() => ({}));
     throw new Error(errorData.message || 'Failed to delete activity');
   }
+}
+
+export async function fetchActivityFeedback({
+  headers,
+  id,
+}: {
+  headers: Headers
+  id: string
+}): Promise<FeedbackList> {
+  const feedback = await fetchAndValidate({
+    url: `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/professor/activities/${id}/feedback`,
+    options: {
+      headers,
+      schema: feedbackListSchema,
+      cache: 'no-store',
+    },
+  });
+
+  return feedback ?? [];
 }

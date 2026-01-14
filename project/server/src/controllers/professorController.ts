@@ -286,6 +286,60 @@ const professorController = {
 
     return sendResponse(res, 204);
   }),
+
+  getActivityFeedback: catchAsync(async (req: Request, res: Response) => {
+    const { id } = req.params;
+
+    // Get authenticated user
+    const session = await auth.api.getSession({
+      headers: fromNodeHeaders(req.headers),
+    });
+
+    if (!session) {
+      throw new AppError('You must be logged in to view feedback', 401);
+    }
+
+    // Get professor's AppUser ID
+    const AppUser = (await import('@/models/appUserModel')).default;
+    const professor = await AppUser.findOne({
+      where: { betterAuthId: session.user.id },
+    });
+
+    if (!professor) {
+      throw new AppError('Professor account not found', 404);
+    }
+
+    const professorData = professor.toJSON();
+
+    if (professorData.role !== 'professor' && professorData.role !== 'admin') {
+      throw new AppError('Only professors can view feedback', 403);
+    }
+
+    // Find the activity
+    const activity = await Activity.findByPk(id);
+
+    if (!activity) {
+      throw new AppError('Activity not found', 404);
+    }
+
+    const activityData = activity.toJSON();
+
+    // Check ownership
+    if (activityData.professorId !== professorData.id) {
+      throw new AppError('You can only view feedback for your own activities', 403);
+    }
+
+    // Get all feedback for this activity
+    const Feedback = (await import('@/models/feedbackModel')).default;
+    const feedbacks = await Feedback.findAll({
+      where: { activityId: id },
+      order: [['createdAt', 'ASC']],
+    });
+
+    const feedbackList = feedbacks.map((feedback) => feedback.toJSON());
+
+    return sendResponse(res, 200, feedbackList);
+  }),
 };
 
 export default professorController;

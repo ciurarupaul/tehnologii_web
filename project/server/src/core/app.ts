@@ -7,6 +7,7 @@ import helmet from 'helmet';
 import auth from '@/lib/auth';
 import adminRouter from '@/routes/adminRoutes';
 import professorRouter from '@/routes/professorRoutes';
+import studentRouter from '@/routes/studentRoutes';
 import userRouter from '@/routes/userRoutes';
 import globalErrorHandler, { notFoundHandler } from '@/utils/errors/globalErrorHandler';
 
@@ -39,6 +40,7 @@ app.use(compression());
 
 // routes
 app.use('/api/admin', adminRouter);
+app.use('/api/student', studentRouter);
 app.use('/api/professor', professorRouter);
 app.use('/api/users', userRouter);
 
