@@ -1,5 +1,5 @@
-import styles from '../Dashboard.module.scss';
-import { fetchAllUsers } from './admin.service';
+import styles from './AdminDashboard.module.scss';
+import { fetchAllUsers } from './adminDashboard.service';
 import UserRoleActions from './UserRoleActions';
 
 type Props = {
@@ -14,10 +14,7 @@ export default async function AdminDashboard({ headers }: Readonly<Props>) {
       {users.map((user) => (
         <div key={user.id} className={styles.admin__item}>
           <span>
-            {user.id}
-            {' '}
-            -
-            {user.firstName}
+            {`${user.id}\t-\t${user.firstName}`}
           </span>
           <UserRoleActions userId={user.id} currentRole={user.role} />
         </div>

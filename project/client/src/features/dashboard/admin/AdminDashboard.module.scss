@@ -1,4 +1,4 @@
-@use '../../scss/mixins';
+@use '../../../scss/mixins';
 
 .admin {
   &__item {
@@ -15,6 +15,21 @@
       button {
         font-size: var(--fontsize--small);
       }
+    }
+  }
+}
+
+.button--active {
+  &:disabled {
+    background-color: var(--primary);
+    color: var(--background);
+    opacity: 0.5;
+
+    &:hover {
+      background-color: var(--primary);
+      color: var(--background);
+      cursor: not-allowed;
+      opacity: 0.5;
     }
   }
 }

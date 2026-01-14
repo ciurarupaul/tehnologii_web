@@ -2,8 +2,8 @@
 
 import { useRouter } from 'next/navigation';
 
-import styles from '../Dashboard.module.scss';
-import { updateUserRole } from './admin.service';
+import styles from './AdminDashboard.module.scss';
+import { updateUserRole } from './adminDashboard.service';
 
 type Props = {
   userId: string
@@ -29,18 +29,21 @@ export default function UserRoleActions({ userId, currentRole }: Props) {
       <button
         onClick={() => handleUpdateRole('student')}
         disabled={currentRole === 'student'}
+        className={currentRole === 'student' ? styles['button--active'] : ''}
       >
         Make student
       </button>
       <button
         onClick={() => handleUpdateRole('professor')}
         disabled={currentRole === 'professor'}
+        className={currentRole === 'professor' ? styles['button--active'] : ''}
       >
         Make professor
       </button>
       <button
         onClick={() => handleUpdateRole('admin')}
         disabled={currentRole === 'admin'}
+        className={currentRole === 'admin' ? styles['button--active'] : ''}
       >
         Make admin
       </button>

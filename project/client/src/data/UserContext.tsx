@@ -9,7 +9,7 @@ import {
   useState,
 } from 'react';
 
-import type { User } from '@/schemas/user.schema';
+import type { User } from '@/types/schemas/user.schema';
 
 import { authClient } from '@/lib/betterAuth';
 

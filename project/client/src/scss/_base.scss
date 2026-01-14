@@ -82,6 +82,7 @@ button {
   text-align: center;
 
   &:hover {
+    transition: all 0.3s;
     cursor: pointer;
     background-color: var(--primary);
     color: var(--background);

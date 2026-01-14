@@ -1,8 +1,8 @@
-import type { User } from '@/schemas/user.schema';
+import type { User } from '@/types/schemas/user.schema';
 
-import { userSchema } from '@/schemas/user.schema';
+import { userSchema } from '@/types/schemas/user.schema';
 
-import { fetchAndValidate } from './user.function';
+import { fetchAndValidate } from './user.utils';
 
 export async function fetchCurrentUser({
   headers,

@@ -1,3 +1,5 @@
+import { seedDatabase } from '@/seeds';
+
 import app from './app';
 import config from './config';
 import database from './database';
@@ -8,24 +10,29 @@ import '@/models';
 
 async function initDb() {
   try {
-    // disable pks
-    await database.query('PRAGMA foreign_keys = OFF');
+    if (config.nodeEnv === 'development') {
+      // SQLite: Disable foreign keys during sync
+      await database.query('PRAGMA foreign_keys = OFF');
+      await database.sync({ force: true });
+      console.log('Database synced (development mode)');
+      
+      // Re-enable foreign keys and seed
+      await database.query('PRAGMA foreign_keys = ON');
+      await seedDatabase();
+    }
+    else {
+      // Production: Only verify connection, use migrations for schema
+      await database.authenticate();
+      console.log('Database connection verified');
+    }
 
-    // sync db
-    await database.sync({ alter: true });
-    console.log('All models were successfully synchronized');
-
-    // re-enable pks
-    await database.query('PRAGMA foreign_keys = ON');
-
-    // start server
-    const port = config.port;
-    app.listen(port, () => {
-      console.log(`App is running on port ${port}...`);
+    app.listen(config.port, () => {
+      console.log(`App is running on port ${config.port}...`);
     });
   }
   catch (err) {
-    console.error('Database sync failed:', err);
+    console.error('Database initialization failed:', err);
+    process.exit(1);
   }
 }
 

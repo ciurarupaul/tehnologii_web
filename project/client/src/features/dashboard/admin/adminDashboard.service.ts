@@ -1,7 +1,7 @@
-import type { UserList } from '@/schemas/user.schema';
+import type { UserList } from '@/types/schemas/user.schema';
 
-import { fetchAndValidate } from '@/features/login/user.function';
-import { userListSchema } from '@/schemas/user.schema';
+import { fetchAndValidate } from '@/features/login/user.utils';
+import { userListSchema } from '@/types/schemas/user.schema';
 
 type Props = {
   headers: Headers

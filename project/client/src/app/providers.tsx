@@ -2,7 +2,7 @@
 
 import type { ReactNode } from 'react';
 
-import type { User } from '@/schemas/user.schema';
+import type { User } from '@/types/schemas/user.schema';
 
 import { UserProvider } from '@/data/UserContext';
 
