@@ -32,6 +32,7 @@
     "pg": "^8.17.0",
     "pg-hstore": "^2.3.4",
     "sequelize": "^6.37.7",
+    "tsx": "^4.20.6",
     "zod": "^3.25.0"
   },
   "devDependencies": {
@@ -44,7 +45,6 @@
     "better-sqlite3": "^12.6.0",
     "nodemon": "^3.1.11",
     "sqlite3": "^5.1.7",
-    "tsx": "^4.20.6",
     "type-coverage": "^2.29.7",
     "typescript": "^5.9.3",
     "typescript-coverage-report": "^1.1.1"
