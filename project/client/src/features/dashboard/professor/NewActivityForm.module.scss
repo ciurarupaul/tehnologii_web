@@ -1,0 +1,130 @@
+@use '../../../scss/mixins';
+
+.form {
+  max-width: 80rem;
+  margin: 0 auto;
+
+  &__header {
+    @include mixins.flex-center();
+    justify-content: flex-start;
+    gap: 2rem;
+    padding-bottom: 3rem;
+    margin-top: -1rem;
+    border-bottom: 1px solid var(--background--lines);
+
+    h2 {
+      font-size: var(--fontsize--xlarge);
+      font-weight: 500;
+    }
+  }
+
+  &__back {
+    @include mixins.flex-center();
+    gap: 0.8rem;
+    text-decoration: none;
+  }
+
+  &__content {
+    margin-top: 3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2.4rem;
+  }
+
+  &__error {
+    padding: 1.2rem 1.6rem;
+    background-color: var(--error--background);
+    color: var(--error--text);
+    border-radius: 4px;
+    font-size: var(--fontsize--small);
+  }
+
+  &__field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+
+    label {
+      font-size: var(--fontsize--medium);
+      font-weight: 500;
+      color: var(--secondary);
+    }
+
+    input,
+    textarea {
+      padding: 1.2rem 1.6rem;
+      font-size: var(--fontsize--medium);
+      font-family: inherit;
+      border: 1px solid var(--background--lines);
+      border-radius: 4px;
+      background-color: var(--background);
+      color: var(--primary);
+      transition: border-color 0.2s;
+
+      &:focus {
+        outline: none;
+        border-color: var(--primary);
+      }
+
+      &::placeholder {
+        color: var(--background--lines);
+      }
+
+      &:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+      }
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 10rem;
+    }
+  }
+
+  &__row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+
+    @include mixins.respond(mobile) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__actions {
+    margin-top: 1rem;
+    @include mixins.flex-center();
+    justify-content: flex-end;
+    gap: 1.6rem;
+  }
+
+  &__cancel {
+    text-decoration: none;
+    background-color: var(--background);
+    color: var(--secondary);
+    border-color: var(--background--lines);
+
+    &:hover {
+      background-color: var(--background--hover);
+      color: var(--secondary);
+    }
+  }
+
+  &__submit {
+    @include mixins.flex-center();
+    gap: 0.8rem;
+    background-color: var(--primary);
+    color: var(--background);
+    border-color: var(--primary);
+
+    &:hover:not(:disabled) {
+      opacity: 0.9;
+    }
+
+    &:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+  }
+}

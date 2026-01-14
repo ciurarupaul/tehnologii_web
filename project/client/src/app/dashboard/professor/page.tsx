@@ -2,6 +2,7 @@ import { headers } from 'next/headers';
 import { redirect } from 'next/navigation';
 
 import { canAccessRole } from '@/features/dashboard/dashboard.functions';
+import { fetchMyActivities } from '@/features/dashboard/professor/professor.service';
 import ProfessorDashboard from '@/features/dashboard/professor/ProfessorDashboard';
 import { fetchCurrentUser } from '@/features/login/user.service';
 
@@ -14,10 +15,12 @@ export default async function ProfessorDashboardPage() {
   }
 
   if (!canAccessRole(user.role, 'professor')) {
-    redirect('/dashboard');
+    redirect(`/dashboard/${user.role}`);
   }
 
-  return <ProfessorDashboard />;
+  const activities = await fetchMyActivities({ headers: headersList });
+
+  return <ProfessorDashboard activities={activities} />;
 }
 
 /*

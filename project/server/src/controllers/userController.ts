@@ -47,10 +47,12 @@ const userController = {
       },
     });
 
+    const userData = appUser.toJSON();
+
     return sendResponse(
       res,
       created ? 201 : 200,
-      modelResponseUser(appUser.toJSON()),
+      modelResponseUser(userData),
     );
   }),
 };

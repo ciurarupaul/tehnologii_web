@@ -14,7 +14,7 @@ export default async function AdminDashboardPage() {
   }
 
   if (!canAccessRole(user.role, 'admin')) {
-    redirect('/dashboard');
+    redirect(`/dashboard/${user.role}`);
   }
 
   return <AdminDashboard headers={headersList} />;

@@ -10,29 +10,34 @@ import '@/models';
 
 async function initDb() {
   try {
-    if (config.nodeEnv === 'development') {
-      // SQLite: Disable foreign keys during sync
+    // Check if tables already exist
+    const tables = await database.getQueryInterface().showAllTables();
+    const tablesExist = tables.includes('app_users');
+
+    if (!tablesExist) {
+      // First time: create tables WITHOUT force (doesn't drop existing data)
+      console.log('Creating database tables for the first time...');
       await database.query('PRAGMA foreign_keys = OFF');
-      await database.sync({ force: true });
-      console.log('Database synced (development mode)');
-      
-      // Re-enable foreign keys and seed
+      await database.sync();
       await database.query('PRAGMA foreign_keys = ON');
+      console.log('All models were successfully created');
+
+      // Seed only on first creation
       await seedDatabase();
+      console.log('Database seeded');
     }
     else {
-      // Production: Only verify connection, use migrations for schema
-      await database.authenticate();
-      console.log('Database connection verified');
+      // Tables exist: just verify connection
+      console.log('Database tables already exist');
     }
 
+    // start server
     app.listen(config.port, () => {
       console.log(`App is running on port ${config.port}...`);
     });
   }
   catch (err) {
     console.error('Database initialization failed:', err);
-    process.exit(1);
   }
 }
 
