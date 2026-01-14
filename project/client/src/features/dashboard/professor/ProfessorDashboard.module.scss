@@ -67,6 +67,37 @@
       }
     }
 
+    &__badges {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      align-items: flex-end;
+    }
+
+    &__status {
+      font-size: var(--fontsize--xsmall);
+      font-weight: 600;
+      padding: 0.3rem 0.8rem;
+      border-radius: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+
+      &--success {
+        background-color: var(--success--background);
+        color: var(--success--text);
+      }
+
+      &--error {
+        background-color: var(--error--background);
+        color: var(--error--text);
+      }
+
+      &--neutral {
+        background-color: var(--neutral--background);
+        color: var(--neutral--text);
+      }
+    }
+
     &__code {
       font-size: var(--fontsize--xsmall);
       font-weight: 700;

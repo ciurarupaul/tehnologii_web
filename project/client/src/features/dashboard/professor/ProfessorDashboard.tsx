@@ -7,6 +7,7 @@ import { useState } from 'react';
 
 import type { ActivityList } from '@/types/schemas/activity.schema';
 
+import { getActivityStatus, getActivityStatusColor, getActivityStatusLabel } from '@/features/dashboard/dashboard.utils';
 import { deleteActivity } from '@/features/dashboard/professor/professor.service';
 
 import styles from './ProfessorDashboard.module.scss';
@@ -53,61 +54,72 @@ export default function ProfessorDashboard({ activities }: ProfessorDashboardPro
         )
         : (
           <div className={styles.prof__grid}>
-            {activities.map((activity) => (
-              <div
-                key={activity.id}
-                className={styles.prof__card}
-              >
-                <div className={styles.prof__card__header}>
-                  <h3>{activity.title}</h3>
-                  <span className={styles.prof__card__code}>{activity.accessCode}</span>
+            {activities.map((activity) => {
+              const status = getActivityStatus(activity.startTime, activity.endTime);
+              const statusColor = getActivityStatusColor(status);
+              const statusLabel = getActivityStatusLabel(status);
+
+              return (
+                <div
+                  key={activity.id}
+                  className={styles.prof__card}
+                >
+                  <div className={styles.prof__card__header}>
+                    <h3>{activity.title}</h3>
+                    <div className={styles.prof__card__badges}>
+                      <span className={`${styles.prof__card__status} ${styles[`prof__card__status--${statusColor}`]}`}>
+                        {statusLabel}
+                      </span>
+                      <span className={styles.prof__card__code}>{activity.accessCode}</span>
+                    </div>
+                  </div>
+                  <p className={styles.prof__card__description}>{activity.description}</p>
+                  <div className={styles.prof__card__times}>
+                    <span>
+                      {new Date(activity.startTime).toLocaleString('en-US', {
+                        month: 'short',
+                        day: 'numeric',
+                        hour: '2-digit',
+                        minute: '2-digit',
+                      })}
+                    </span>
+                    <span>→</span>
+                    <span>
+                      {new Date(activity.endTime).toLocaleString('en-US', {
+                        month: 'short',
+                        day: 'numeric',
+                        hour: '2-digit',
+                        minute: '2-digit',
+                      })}
+                    </span>
+                  </div>
+                  <div className={styles.prof__card__actions}>
+                    <Link
+                      href={`/activity/${activity.id}`}
+                      className={styles.prof__card__view}
+                    >
+                      View details
+                    </Link>
+                    <Link
+                      href={`/activity/${activity.id}/edit`}
+                      className={styles.prof__card__edit}
+                      title='Edit activity'
+                    >
+                      <Edit2 width={16} height={16} />
+                    </Link>
+                    <button
+                      onClick={() => handleDelete(activity.id, activity.title)}
+                      className={styles.prof__card__delete}
+                      disabled={deletingId === activity.id}
+                      title='Delete activity'
+                      type='button'
+                    >
+                      <Trash2 width={16} height={16} />
+                    </button>
+                  </div>
                 </div>
-                <p className={styles.prof__card__description}>{activity.description}</p>
-                <div className={styles.prof__card__times}>
-                  <span>
-                    {new Date(activity.startTime).toLocaleString('en-US', {
-                      month: 'short',
-                      day: 'numeric',
-                      hour: '2-digit',
-                      minute: '2-digit',
-                    })}
-                  </span>
-                  <span>→</span>
-                  <span>
-                    {new Date(activity.endTime).toLocaleString('en-US', {
-                      month: 'short',
-                      day: 'numeric',
-                      hour: '2-digit',
-                      minute: '2-digit',
-                    })}
-                  </span>
-                </div>
-                <div className={styles.prof__card__actions}>
-                  <Link
-                    href={`/activity/${activity.id}`}
-                    className={styles.prof__card__view}
-                  >
-                    View details
-                  </Link>
-                  <Link
-                    href={`/activity/${activity.id}/edit`}
-                    className={styles.prof__card__edit}
-                    title='Edit activity'
-                  >
-                    <Edit2 width={16} height={16} />
-                  </Link>
-                  <button
-                    onClick={() => handleDelete(activity.id, activity.title)}
-                    className={styles.prof__card__delete}
-                    disabled={deletingId === activity.id}
-                    title='Delete activity'
-                    type='button'
-                  >
-                    <Trash2 width={16} height={16} />
-                  </button>
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         )}
     </div>

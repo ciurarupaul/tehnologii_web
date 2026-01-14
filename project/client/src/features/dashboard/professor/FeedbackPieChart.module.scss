@@ -1,0 +1,67 @@
+@use '../../../scss/mixins';
+
+.chart {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 2rem;
+  background-color: var(--background);
+  border: 1px solid var(--background--lines);
+  border-radius: 4px;
+  margin-bottom: 3rem;
+
+  @include mixins.respond(mobile) {
+    padding: 1.6rem;
+  }
+
+  &__empty {
+    text-align: center;
+    padding: 3rem;
+    color: var(--secondary);
+  }
+
+  &__svg {
+    width: 100%;
+    max-width: 30rem;
+    height: auto;
+    margin: 0 auto;
+  }
+
+  &__slice {
+    transition: all 0.2s;
+    stroke: var(--background);
+    stroke-width: 3;
+    opacity: 0.9;
+
+    &:hover {
+      opacity: 1;
+      filter: brightness(1.05);
+    }
+  }
+
+  &__legend {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+
+    &__item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      font-size: var(--fontsize--small);
+    }
+
+    &__color {
+      width: 1.6rem;
+      height: 1.6rem;
+      border-radius: 3px;
+      flex-shrink: 0;
+      border: 2px solid currentColor;
+    }
+
+    &__label {
+      color: var(--secondary);
+      font-weight: 500;
+    }
+  }
+}

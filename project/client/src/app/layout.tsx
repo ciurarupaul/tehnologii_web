@@ -2,8 +2,6 @@ import type { ReactNode } from 'react';
 
 import { headers } from 'next/headers';
 
-import Footer from '@/components/layout/Footer';
-
 import '../scss/main.scss';
 import Header from '@/components/layout/Header';
 import { fetchCurrentUser } from '@/features/login/user.service';
@@ -25,7 +23,6 @@ export default async function RootLayout({ children }: Readonly<Props>) {
         <Providers user={user}>
           <Header />
           <main className='container'>{children}</main>
-          <Footer />
         </Providers>
       </body>
     </html>

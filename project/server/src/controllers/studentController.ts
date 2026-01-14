@@ -10,6 +10,46 @@ import AppError from '@/utils/errors/appError';
 import { catchAsync } from '@/utils/errors/catchAsync';
 
 const studentController = {
+  getMyActivities: catchAsync(async (req: Request, res: Response) => {
+    // Get authenticated user
+    const session = await auth.api.getSession({
+      headers: fromNodeHeaders(req.headers),
+    });
+
+    if (!session) {
+      throw new AppError('You must be logged in to view activities', 401);
+    }
+
+    // Get student's AppUser ID
+    const AppUser = (await import('@/models/appUserModel')).default;
+    const student = await AppUser.findOne({
+      where: { betterAuthId: session.user.id },
+    });
+
+    if (!student) {
+      throw new AppError('Student account not found', 404);
+    }
+
+    const studentData = student.toJSON();
+
+    // Get activities the student is enrolled in
+    const activities = await Activity.findAll({
+      include: [
+        {
+          association: 'students',
+          where: { id: studentData.id },
+          attributes: [],
+          through: { attributes: [] },
+        },
+      ],
+      order: [['startTime', 'DESC']],
+    });
+
+    const activitiesData = activities.map((activity) => activity.toJSON());
+
+    return sendResponse(res, 200, activitiesData);
+  }),
+
   joinActivity: catchAsync(async (req: Request, res: Response) => {
     // Get authenticated user
     const session = await auth.api.getSession({
@@ -49,6 +89,20 @@ const studentController = {
     if (now > endTime) {
       throw new AppError('This activity has ended', 400);
     }
+
+    // Get student's AppUser ID
+    const AppUser = (await import('@/models/appUserModel')).default;
+    const student = await AppUser.findOne({
+      where: { betterAuthId: session.user.id },
+    });
+
+    if (!student) {
+      throw new AppError('Student account not found', 404);
+    }
+
+    // Add student to activity (if not already enrolled)
+    // @ts-expect-error - Sequelize association method
+    await activity.addStudent(student);
 
     return sendResponse(res, 200, activityData);
   }),

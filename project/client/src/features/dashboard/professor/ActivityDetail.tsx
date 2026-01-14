@@ -1,12 +1,17 @@
 'use client';
 
-import { AlertCircle, ArrowLeft, Frown, Meh, Smile } from 'lucide-react';
+import { AlertCircle, ArrowLeft, Frown, Meh, RefreshCw, Smile } from 'lucide-react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import { useState } from 'react';
 
 import type { Activity } from '@/types/schemas/activity.schema';
 import type { FeedbackList } from '@/types/schemas/feedback.schema';
 
+import { getActivityStatus, getActivityStatusColor, getActivityStatusLabel } from '@/features/dashboard/dashboard.utils';
+
 import styles from './ActivityDetail.module.scss';
+import FeedbackPieChart from './FeedbackPieChart';
 
 type ActivityDetailProps = {
   activity: Activity
@@ -14,6 +19,19 @@ type ActivityDetailProps = {
 };
 
 export default function ActivityDetail({ activity, feedback }: ActivityDetailProps) {
+  const router = useRouter();
+  const [isRefreshing, setIsRefreshing] = useState(false);
+
+  const status = getActivityStatus(activity.startTime, activity.endTime);
+  const statusColor = getActivityStatusColor(status);
+  const statusLabel = getActivityStatusLabel(status);
+
+  async function handleRefresh() {
+    setIsRefreshing(true);
+    router.refresh();
+    setTimeout(() => setIsRefreshing(false), 500);
+  }
+
   const formatDateTime = (isoString: string) => {
     return new Date(isoString).toLocaleString('en-US', {
       weekday: 'long',
@@ -33,6 +51,9 @@ export default function ActivityDetail({ activity, feedback }: ActivityDetailPro
           Back
         </Link>
         <h2>Activity Details</h2>
+        <span className={`${styles.detail__status} ${styles[`detail__status--${statusColor}`]}`}>
+          {statusLabel}
+        </span>
       </div>
 
       <div className={styles.detail__content}>
@@ -79,7 +100,23 @@ export default function ActivityDetail({ activity, feedback }: ActivityDetailPro
 
       {/* Feedback Section */}
       <div className={styles.detail__feedback}>
-        <h3>Student Feedback</h3>
+        <div className={styles.detail__feedback__header}>
+          <h3>Student Feedback</h3>
+          <button
+            onClick={handleRefresh}
+            disabled={isRefreshing}
+            className={styles.detail__refresh}
+            type='button'
+            title='Refresh feedback'
+          >
+            <RefreshCw
+              width={18}
+              height={18}
+              className={isRefreshing ? styles['detail__refresh--spinning'] : ''}
+            />
+            Refresh
+          </button>
+        </div>
 
         {feedback.length === 0
           ? (
@@ -87,6 +124,32 @@ export default function ActivityDetail({ activity, feedback }: ActivityDetailPro
           )
           : (
             <>
+              {/* Pie Chart Visualization */}
+              <FeedbackPieChart
+                data={[
+                  {
+                    label: 'Happy',
+                    count: feedback.filter((f) => f.type === 'smiley').length,
+                    color: '#2f9e44',
+                  },
+                  {
+                    label: 'Sad',
+                    count: feedback.filter((f) => f.type === 'frowny').length,
+                    color: '#e03131',
+                  },
+                  {
+                    label: 'Surprised',
+                    count: feedback.filter((f) => f.type === 'surprised').length,
+                    color: '#e47112',
+                  },
+                  {
+                    label: 'Confused',
+                    count: feedback.filter((f) => f.type === 'confused').length,
+                    color: '#343a40',
+                  },
+                ]}
+              />
+
               <div className={styles.detail__stats}>
                 {[
                   { type: 'smiley', icon: Smile, label: 'Happy', color: 'green' },
