@@ -12,6 +12,7 @@
   "scripts": {
     "dev": "next dev --turbo",
     "build": "next build",
+    "start": "next start",
     "lint": "npx eslint .",
     "ts-coverage-report": "typescript-coverage-report",
     "ts-coverage": "type-coverage --json-output > ts-coverage.json"
