@@ -14,7 +14,7 @@
   "scripts": {
     "dev": "nodemon --exec tsx src/core/server.ts",
     "build": "echo 'No build step needed - using tsx runtime'",
-    "start": "NODE_ENV=production tsx src/core/server.ts",
+    "start": "NODE_ENV=production npx tsx src/core/server.ts",
     "ts-coverage-report": "typescript-coverage-report",
     "ts-coverage": "type-coverage --json-output > ts-coverage.json",
     "db:init": "node -e \"require('fs').mkdirSync('database', {recursive:true})\"",
