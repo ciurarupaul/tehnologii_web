@@ -17,9 +17,19 @@ async function initDb() {
     if (!tablesExist) {
       // First time: create tables WITHOUT force (doesn't drop existing data)
       console.log('Creating database tables for the first time...');
-      await database.query('PRAGMA foreign_keys = OFF');
+
+      // Only use PRAGMA for SQLite
+      const isDevelopment = config.nodeEnv === 'development';
+      if (isDevelopment) {
+        await database.query('PRAGMA foreign_keys = OFF');
+      }
+
       await database.sync();
-      await database.query('PRAGMA foreign_keys = ON');
+
+      if (isDevelopment) {
+        await database.query('PRAGMA foreign_keys = ON');
+      }
+
       console.log('All models were successfully created');
 
       // Seed only on first creation
