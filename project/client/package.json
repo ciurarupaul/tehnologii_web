@@ -20,6 +20,8 @@
     "better-auth": "^1.4.10",
     "lucide-react": "^0.562.0",
     "next": "^15.5.4",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
     "sass": "^1.93.2",
     "sqlite3": "^5.1.7",
     "zod": "^3.25.0"
@@ -28,8 +30,6 @@
     "@types/node": "^22.19.1",
     "@types/react": "^19.2.6",
     "@types/react-dom": "^19.2.3",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
     "ts-node": "^10.9.2",
     "type-coverage": "^2.29.7",
     "typescript": "^5.9.3",
