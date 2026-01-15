@@ -19,9 +19,7 @@ const database: SqliteDatabase | Pool = isDevelopment
 
 const authConfig = {
   database,
-  baseURL: config.nodeEnv === 'production'
-    ? 'https://continuous-feedback-api.onrender.com'
-    : 'http://localhost:8000',
+  baseURL: config.betterAuthUrl,
   trustedOrigins: [
     config.localClientUrl || 'http://localhost:3000',
     config.clientUrl,
