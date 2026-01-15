@@ -21,8 +21,8 @@ const authConfig = {
   database,
   trustedOrigins: [
     config.localClientUrl || 'http://localhost:3000',
-    ...(config.nodeEnv === 'production' ? [config.clientUrl || ''] : []),
-  ],
+    config.clientUrl,
+  ].filter(Boolean),
   experimental: {
     joins: true,
   },
