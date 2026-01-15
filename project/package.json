@@ -15,7 +15,7 @@
     "lint": "npx eslint .",
     "type-coverage": "turbo type-coverage",
     "type-coverage-report": "turbo type-coverage-report",
-    "prepare": "husky"
+    "prepare": "node -e \"if (process.env.NODE_ENV !== 'production') require('husky')\""
   },
   "devDependencies": {
     "@antfu/eslint-config": "^6.2.0",
