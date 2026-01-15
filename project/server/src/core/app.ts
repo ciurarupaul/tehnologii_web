@@ -15,9 +15,14 @@ import config from './config';
 
 const app = express();
 
+const allowedOrigins = [
+  config.localClientUrl,
+  config.clientUrl,
+].filter(Boolean);
+
 app.use(
   cors({
-    origin: config.localClientUrl,
+    origin: allowedOrigins,
     methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'],
     credentials: true,
   }),
