@@ -1,0 +1,24 @@
+.error-display {
+  position: fixed;
+  display: none;
+  top: 0;
+  right: 0;
+  background-color: var(--error-color);
+  color: var(--alternate-text-color);
+  height: 3em;
+  width: 10em;
+  opacity: 0.7;
+  border-radius: 0em 0em 0em 0.5em;
+  padding: 0em 2em;
+  align-items: center;
+  justify-content: center;
+  flex-flow: row wrap;
+}
+
+.error-display div {
+  width: 100%;
+}
+
+.visible {
+  display: flex;
+}
